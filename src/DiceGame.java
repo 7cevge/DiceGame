@@ -23,6 +23,11 @@ public class DiceGame {
 		char[] board = defaultBoard.clone();
 		int state = 0, die1 = 0, die2 = 0, xes = 0, round = 0;
 		boolean quit = false;
+		
+		/* Test win *Definitely not cheating! */
+		boolean isGoodRNG = false;
+		int goodRNGi = 0;
+		final int[] goodRNG = { 1, 2, 3, 4, 5, 6, 1, 6, 2, 6, 3, 6, 4, 6, 5, 6, 6, 6 };
 
 		/* Game loop */
 		do {
@@ -37,8 +42,16 @@ public class DiceGame {
 				case 0:	/* Main menu state */
 					switch(input) {
 						case "p": /* Play */
-							die1 = rng.nextInt(1, 6);
-							die2 = rng.nextInt(1, 6);
+							if (isGoodRNG) {
+								goodRNGi = 0;
+								die1 = goodRNG[goodRNGi];
+								goodRNGi++;
+								die2 = goodRNG[goodRNGi];
+								goodRNGi++;
+							} else {
+								die1 = rng.nextInt(1, 6);
+								die2 = rng.nextInt(1, 6);
+							}
 							state = 1;
 							break;
 						case "b": /* Check score board */
@@ -64,8 +77,15 @@ public class DiceGame {
 								}
 								round += 1;
 								
-								die1 = rng.nextInt(1, 6);
-								die2 = rng.nextInt(1, 6);
+								if (isGoodRNG && goodRNGi < goodRNG.length -1) {
+									die1 = goodRNG[goodRNGi];
+									goodRNGi++;
+									die2 = goodRNG[goodRNGi];
+									goodRNGi++;
+								} else {
+									die1 = rng.nextInt(1, 6);
+									die2 = rng.nextInt(1, 6);
+								}
 							} else {
 								System.err.println(" Move invalid, pick another move");
 							}
@@ -81,8 +101,15 @@ public class DiceGame {
 								}
 								round += 1;
 								
-								die1 = rng.nextInt(1, 6);
-								die2 = rng.nextInt(1, 6);
+								if (isGoodRNG && goodRNGi < goodRNG.length -1) {
+									die1 = goodRNG[goodRNGi];
+									goodRNGi++;
+									die2 = goodRNG[goodRNGi];
+									goodRNGi++;
+								} else {
+									die1 = rng.nextInt(1, 6);
+									die2 = rng.nextInt(1, 6);
+								}
 							} else {
 								System.err.println(" Move invalid, pick another move");
 							}
