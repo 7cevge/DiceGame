@@ -96,24 +96,24 @@ public class DiceGame {
 					}
 					break;
 				case 2: /* Win state */
-					while (input.length() != 3 && input != "q") {
+					while (input.length() != 3 && !(input.equals("q"))) {
 						System.err.println(" Please enter a 3 character name");
 						System.out.print("> ");
 						input = scan.next();
 					}
-					if (input != "q") {
+					if (!(input.equals("q"))) {
 						writeScore(input, (int)((xes / (round +1.0)) *xes *10));
 					}
 					board = defaultBoard.clone();
 					state = xes = round = 0;
 					break;
 				case 3: /* Lose state */
-					while (input.length() != 3 && input != "q") {
+					while (input.length() != 3 && !(input.equals("q"))) {
 						System.err.println(" Please enter a 3 character name");
 						System.out.print("> ");
 						input = scan.next();
 					}
-					if (input != "q") {
+					if (!(input.equals("q"))) {
 						writeScore(input, (int)((xes / (round +1.0)) *xes *10));
 					}
 					board = defaultBoard.clone();
