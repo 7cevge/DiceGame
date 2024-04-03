@@ -40,8 +40,11 @@
        [g] to give up
 
    Two dice are rolled and user can choose to 'split' to drop both numbers from the board: o -> x under that number.
-                                           or 'combine' to drop the number equal to the sum of the 2 rolled numbers.
-                                           or 'give up' which results in the lost screen.
+   
+‎                                           or 'combine' to drop the number equal to the sum of the 2 rolled numbers.
+
+‎                                           or 'give up' which results in the lost screen.
+                                           
    This implementation does not force a lose screen, it will simply prompt the user to choose another option if the one they picked was invalid.
 
    The lost screen:
@@ -54,5 +57,6 @@
    User can give a three character name to be recorded in the score board or quit without recording their score.
 
    The win screen is basically the same, other then that it only triggers when there are no 'o's on the board.
-       *note: I've not been able to 'win' yet so functionality have not been tested...
+   
+‎       *note: I've not been able to 'win' yet so functionality have not been tested...
    
